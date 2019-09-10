@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/DetailPage.dart';
 import 'package:flutter_app/first_tutorial/todo_list_screen.dart';
 import 'package:flutter_app/first_tutorial/todo.dart';
 import 'package:flutter_app/HomePage.dart';
@@ -9,6 +10,9 @@ void main(){
   runApp(new MaterialApp(
     title: "Planets",
     home: new HomePage(),
+    /*routes: <String,WidgetBuilder>{
+      '/detail': (_) => new DetailPage()
+    },*/
   ));
 }
 
