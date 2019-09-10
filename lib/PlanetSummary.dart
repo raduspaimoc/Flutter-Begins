@@ -3,14 +3,14 @@ import 'package:flutter_app/DetailPage.dart';
 import 'package:flutter_app/Planet.dart';
 import 'package:flutter_app/text_style.dart';
 
-class PlanetRow extends StatelessWidget{
+class PlanetSummary extends StatelessWidget{
 
 
   final Planet planet;
   final bool horizontal;
 
-  PlanetRow(this.planet, {this.horizontal = true});
-  PlanetRow.vertical(this.planet): horizontal = false;
+  PlanetSummary(this.planet, {this.horizontal = true});
+  PlanetSummary.vertical(this.planet): horizontal = false;
 
   @override
   Widget build(BuildContext context) {
@@ -100,20 +100,28 @@ class PlanetRow extends StatelessWidget{
     );
 
     return new GestureDetector(
-      onTap: () => Navigator.of(context).push(new PageRouteBuilder(
-          pageBuilder: (_ ,__, ___) => new DetailPage(planet))),
-      child: new Container(
-        height: 120.0,
-        margin: const EdgeInsets.symmetric(
-          vertical: 16.0,
-          horizontal: 24.0
-        ),
-        child: new Stack(
-          children: <Widget>[
-            planetCard,
-            planetThumbnail
-          ],
-        ),
+        onTap: horizontal
+          ? () => Navigator.of(context).push(
+            new PageRouteBuilder(
+              pageBuilder: (_, __, ___) => new DetailPage(planet),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+                new FadeTransition(opacity: animation, child: child),
+              ) ,
+           )
+         : null,
+
+        child: new Container(
+          height: 120.0,
+          margin: const EdgeInsets.symmetric(
+            vertical: 16.0,
+            horizontal: 24.0
+          ),
+          child: new Stack(
+            children: <Widget>[
+              planetCard,
+              planetThumbnail
+            ],
+          ),
 
       ),
     );
