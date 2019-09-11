@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/PlanetSummary.dart';
-import 'package:flutter_app/Planet.dart';
-import 'package:flutter_app/Separator.dart';
-import 'package:flutter_app/text_style.dart';
+import 'package:flutter_app/PlanetsTutorial/PlanetSummary.dart';
+import 'package:flutter_app/PlanetsTutorial/Planet.dart';
+import 'package:flutter_app/PlanetsTutorial/Separator.dart';
+import 'package:flutter_app/PlanetsTutorial/text_style.dart';
 
 class DetailPage extends StatelessWidget{
 

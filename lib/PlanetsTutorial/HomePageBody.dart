@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/PlanetSummary.dart';
-import 'package:flutter_app/Planet.dart';
+import 'package:flutter_app/PlanetsTutorial/PlanetSummary.dart';
+import 'package:flutter_app/PlanetsTutorial/Planet.dart';
 
 
 class HomePageBody extends StatelessWidget{

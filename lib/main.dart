@@ -1,11 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_app/DetailPage.dart';
-import 'package:flutter_app/first_tutorial/todo_list_screen.dart';
-import 'package:flutter_app/first_tutorial/todo.dart';
-import 'package:flutter_app/HomePage.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_app/home_page.dart';
+import 'package:flutter_app/email_model.dart';
+import 'package:flutter_app/styling.dart';
 
-void main(){
+
+void main() => runApp(ReplyApp());
+
+class ReplyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<EmailModel>.value(value: EmailModel()),
+      ],
+      child: MaterialApp(
+        title: 'Reply',
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppTheme.notWhite,
+          canvasColor: AppTheme.notWhite,
+          accentColor: AppTheme.orange,
+          textTheme: AppTheme.textTheme,
+        ),
+        onGenerateRoute: (RouteSettings settings) {
+          return PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, __) => new HomePage());
+          /*if (settings.isInitialRoute) {
+            return PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, __) => new HomePage());
+            //return PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, __) => HomePage());
+            /*Navigator.of(context).push(new PageRouteBuilder(
+                pageBuilder: (_, __, ___) => new HomePage()))*/
+          }*/
+        },
+      ),
+    );
+  }
+}
+
+/*void main(){
   //Routes.initRoutes();
   runApp(new MaterialApp(
     title: "Planets",
@@ -110,4 +141,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/

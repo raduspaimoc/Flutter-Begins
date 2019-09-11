@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/DetailPage.dart';
-import 'package:flutter_app/Planet.dart';
-import 'package:flutter_app/text_style.dart';
+import 'package:flutter_app/PlanetsTutorial/DetailPage.dart';
+import 'package:flutter_app/PlanetsTutorial/Planet.dart';
+import 'package:flutter_app/PlanetsTutorial/text_style.dart';
 
 class PlanetSummary extends StatelessWidget{
 
