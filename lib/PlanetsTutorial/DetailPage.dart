@@ -4,6 +4,7 @@ import 'package:flutter_app/PlanetsTutorial/PlanetSummary.dart';
 import 'package:flutter_app/PlanetsTutorial/Planet.dart';
 import 'package:flutter_app/PlanetsTutorial/Separator.dart';
 import 'package:flutter_app/PlanetsTutorial/text_style.dart';
+import 'package:flutter_app/PlanetsTutorial/Planet.dart';
 
 class DetailPage extends StatelessWidget{
 

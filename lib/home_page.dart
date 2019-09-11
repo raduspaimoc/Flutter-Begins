@@ -6,6 +6,10 @@ import 'package:flutter_app/list_page.dart';
 import 'package:flutter_app/email_model.dart';
 import 'package:flutter_app/styling.dart';
 import 'package:flutter_app/ReplyBar/scale_out_transition.dart';
+import 'package:flutter_app/details_page.dart';
+import 'package:flutter_app/events_list.dart';
+import 'package:flutter_app/PlanetsTutorial/DetailPage.dart';
+import 'package:flutter_app/PlanetsTutorial/Planet.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,24 +20,30 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
 
   final GlobalKey _fabKey = GlobalKey();
+  Navigator nav;
   final PageRouteBuilder<void> _initialRoute =
   PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, __) => ListPage());
 
+  final PageRouteBuilder<void> _eventsList =
+  PageRouteBuilder<void>(pageBuilder: (BuildContext context, _, ___) => EventsList());
+
   @override
   Widget build(BuildContext context) {
+    nav = new Navigator(
+      key: _navigatorKey,
+      onGenerateRoute: (RouteSettings settings) {
+        return _initialRoute;
+
+      },
+    );
+
+
     return WillPopScope(
       onWillPop: _willPopCallback,
       child: Scaffold(
         body: ScaleOutTransition(
-          child: Navigator(
-            key: _navigatorKey,
-            onGenerateRoute: (RouteSettings settings) {
-              return _initialRoute;
-              /*if (settings.name == Navigator.defaultRouteName) {
-                return _initialRoute;
-              }*/
-            },
-          ),
+          child: nav
+
         ),
         bottomNavigationBar: _bottomNavigation,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -73,12 +83,20 @@ class _HomePageState extends State<HomePage> {
                       /*const SizedBox(width: 4),*/
                       Image.asset(
                         'assets/images/ic_list.png',
-                        width: 25,
-                        height: 25,
+                        width: 48,
+                        height: 48,
                       ),
                     ],
                   ),
-                  onPressed: () => print('Tap!'),
+                  onPressed: () => //print("Hey")
+                    nav = new Navigator(
+                      key: _navigatorKey,
+                      onGenerateRoute: (RouteSettings settings) {
+                        return _eventsList;
+
+                      },
+                    ),
+                    //Navigator.of(context).push<void>(EventsList())
                 ),
                 Spacer(),
                 _actionItems,
@@ -155,10 +173,12 @@ class _HomePageState extends State<HomePage> {
             child: SizedBox(
               width: 24,
               height: 24,
-              child: FlareActor(
+              child: Icon(Icons.add)
+              /*FlareActor(
                 'assets/flare/edit_reply.flr',
                 animation: showEditAsAction ? 'ReplyToEdit' : 'EditToReply',
-              ),
+
+              ),*/
             ),
             backgroundColor: AppTheme.orange,
             onPressed: () => Navigator.of(context).push<void>(
