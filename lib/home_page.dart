@@ -65,16 +65,16 @@ class _HomePageState extends State<HomePage> {
                   icon: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      const Icon(
+                      /*const Icon(
                         Icons.arrow_drop_up,
                         color: Colors.white,
                         size: 20,
-                      ),
-                      const SizedBox(width: 4),
+                      ),*/
+                      /*const SizedBox(width: 4),*/
                       Image.asset(
-                        'assets/images/logo.png',
-                        width: 21,
-                        height: 21,
+                        'assets/images/ic_list.png',
+                        width: 25,
+                        height: 25,
                       ),
                     ],
                   ),
@@ -100,8 +100,26 @@ class _HomePageState extends State<HomePage> {
           secondCurve: Curves.fastOutSlowIn,
           sizeCurve: Curves.fastOutSlowIn,
           firstChild: IconButton(
-            icon: const Icon(Icons.search, color: Colors.white),
+            iconSize: 72,
+            icon: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                /*const Icon(
+                        Icons.arrow_drop_up,
+                        color: Colors.white,
+                        size: 20,
+                      ),*/
+                /*const SizedBox(width: 4),*/
+                Image.asset(
+                  'assets/images/ic_profile.png',
+                  width: 25,
+                  height: 25,
+                ),
+              ],
+            ),
             onPressed: () => print('Tap!'),
+            /*icon: const Icon(Icons.search, color: Colors.white),
+            onPressed: () => print('Tap!'),*/
           ),
           secondChild: showSecond
               ? Row(
